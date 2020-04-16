@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Create Element</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <div id="root"></div>
+    <script>
+      const rootElement = document.getElementById("root");
+      // react can accept children from the children props directly (as an array) or as a series of args after the second one
+      React.createElement("div", {
+        children: "Hello World",
+        className: "container",
+      });
+      ReactDom.render(element, rootElement);
+    </script>
+  </body>
+</html>

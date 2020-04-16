@@ -1,0 +1,40 @@
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    function UsernameForm() {
+      const [username, setUsername] = React.useState("");
+
+      function handleSubmit(event) {
+        event.preventDefault();
+        alert(`you entered ${username}`);
+      }
+
+      function handleChange(event) {
+        setUsername(event.target.value.toLowerCase());
+      }
+
+      return (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="usernameInput">Username:</label>
+            <input
+              id="usernameInput"
+              type="text"
+              onChange={handleChange}
+              // communicating to react that it does not need to manage this and we will do it
+              // If you ever need to make the value different to what the user is typing you can pass a value prop
+              //   When react re-renders the component (which happens as you are typing), it sets the value to the username state.
+              value={username}
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      );
+    }
+
+    ReactDOM.render(<UsernameForm />, document.getElementById("root"));
+  </script>
+</body>

@@ -1,0 +1,31 @@
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    function CharacterCount({ text }) {
+      // Javascript land - we can do functions,conditionals, everything
+      return (
+        //   Still JS
+        // JSX after the open tag there we have prop syntax and children syntax.
+        // The moment we do a curly brace we open JS land again but it's limited to expressions because you can pass an if statement or whatever as the third argument to a function (React.createElement())
+        <div>
+          {`The text '${text}' has`}
+          {text.length ? text.length : "No"}
+          {` characters`}
+        </div>
+        // JS again
+      );
+    }
+
+    const element = (
+      <>
+        <CharacterCount text="Hello World" />
+        <CharacterCount text="" />
+      </>
+    );
+
+    ReactDOM.render(element, document.getElementById("root"));
+  </script>
+</body>

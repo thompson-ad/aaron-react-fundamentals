@@ -1,0 +1,48 @@
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    const rootElement = document.getElementById("root");
+
+    // if it's just like this you have to refresh the browser all the time
+    // const time = new Date().toLocaleTimeString();
+    // const element = <div>{time}</div>;
+
+    // ReactDOM.render(element, rootElement);
+
+    // if you have it like this, where you create a new HTML element
+    // the  entire inner HTML will be re-rendered every time.
+    // function tick() {
+    //   const time = new Date().toLocaleTimeString();
+    //   const element = `
+    //     <div>
+    //       Hello
+    //       <div>${time}</div>
+    //     </div>
+    //   `;
+
+    //   rootElement.innerHTML = element;
+
+    //   //   ReactDOM.render(element, rootElement);
+    // }
+
+    // but like this react only re-renders what is changing.
+    // React will compare what has changed between the last time and this time when you pass JSX to ReatDOM.render()
+    // it will surgically update
+    function tick() {
+      const time = new Date().toLocaleTimeString();
+      const element = (
+        <div>
+          Hello
+          <div>{time}</div>
+        </div>
+      );
+
+      ReactDOM.render(element, rootElement);
+    }
+
+    setInterval(tick, 1000);
+  </script>
+</body>
